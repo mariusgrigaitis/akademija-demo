@@ -31,20 +31,6 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
         }
 
-        while (true) {
-            for ($i = 0; $i < 1000; $i++) {
-                if ($i > 1000) {
-                    if (true) {
-                        error_reporting(E_ALL);
-                        error_reporting(E_ALL);
-                        error_reporting(E_ALL);
-                        error_reporting(E_ALL);
-                        error_reporting(E_ALL);
-                    }
-                }
-            }
-        }
-
         return $bundles;
     }
 
