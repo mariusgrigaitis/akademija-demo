@@ -1,78 +1,69 @@
-# Vagrant Installation
+Symfony Standard Edition
+========================
 
-*Note:* Copy paste commands one at a time!
+Welcome to the Symfony Standard Edition - a fully-functional Symfony2
+application that you can use as the skeleton for your new applications.
 
-## Cygwin (Windows only)
+For details on how to download and get started with Symfony, see the
+[Installation][1] chapter of the Symfony Documentation.
 
-Select http server. Mirror `http://cygwin.uib.no` will work just fine.
+What's inside?
+--------------
 
-Mandatory packages:
+The Symfony Standard Edition is configured with the following defaults:
 
-- interpreters/ruby
-- vim
+  * An AppBundle you can use to start coding;
 
-## Vagrant Installation
+  * Twig as the only configured template engine;
 
-Install VirtualBox (https://www.virtualbox.org/wiki/Downloads).
+  * Doctrine ORM/DBAL;
 
-Install Vagrant (https://www.vagrantup.com/downloads.html).
+  * Swiftmailer;
 
-Install plugins:
+  * Annotations enabled for everything.
 
-```sh
-vagrant plugin install vagrant-winnfsd # Windows only
-vagrant plugin install vagrant-hostmanager
-vagrant plugin install vagrant-bindfs # MacOSX and Linux only
-```
+It comes pre-configured with the following bundles:
 
-Clone this repository.
+  * **FrameworkBundle** - The core Symfony framework bundle
 
-Run `vagrant up`. This will take 5 - 20 minutes. Monitor and allow admin access multiple times during first few minutes.
+  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
+    template and routing annotation capability
 
-Visit http://nfqakademija.dev and check that `File not found.` message has been printed to browser.
+  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
 
-## Symfony
+  * [**TwigBundle**][8] - Adds support for the Twig templating engine
 
-Install Symfony:
+  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
+    component
 
-```sh
-vagrant ssh
-cd /var/www/
-rm -rf nfqakademija/
-composer create-project symfony/framework-standard-edition nfqakademija
-```
+  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
+    sending emails
 
-Update configuration so that `/app_dev.php/` URL part would not be required:
+  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
 
-```sh
-sed 's/app.php/app_dev.php/g' web/.htaccess > /tmp/foo_bar_htaccess && /bin/cp /tmp/foo_bar_htaccess web/.htaccess
-sed "s/'::1'/'::1', '192.168.59.1'/g" web/app_dev.php > /tmp/foo_bar_app_dev && /bin/cp /tmp/foo_bar_app_dev web/app_dev.php
-```
+  * [**AsseticBundle**][12] - Adds support for Assetic, an asset processing
+    library
 
-Visit: http://nfqakademija.dev/demo/hello/Jonas. It should output nicely formatted page.
+  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
+    the web debug toolbar
 
-## PHPStorm
+  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
+    configuring and working with Symfony distributions
 
-PHPStorm open: {PATH}/nfqakademija/nfqakademija
+  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
+    capabilities
 
-## If NFS fails
+All libraries and bundles included in the Symfony Standard Edition are
+released under the MIT or BSD license.
 
-Try `smb` instead of `nfs`. Continue this chapter only if that fails also.
+Enjoy!
 
-Disable two-way file sync. Open locally `/puphpet/config.yml` file and find `synced_folder` section. Replace sub-tree with `synced_folder: []`.
-
-In PHPStorm set up deployment server over SSH:
-
-- Type: `SFTP`
-- SFTP host: `nfqakademija`
-- Root path: `/var/www/nfqakademija`
-- User name: `vagrant`
-- Use private key at `{YOUR_PATH}/puphpet/files/dot/ssh/id_rsa`.
-- Test your connection: `Test SFTP connection...` button.
-- Save and close.
-
-Select root project directory `nfqakademija`, use **Ctrl + Alt + A** and type in `Sync with Deployed to ...` (autocomplete). Upload all.
-
-Next time you can select only `app` or `src` folders to save sync time.
-
-First time sync on my laptop: `Synchronization completed in 4 minutes: 30,465 files transferred (2.7 Mb/s)`
+[1]:  http://symfony.com/doc/2.6/book/installation.html
+[6]:  http://symfony.com/doc/2.6/bundles/SensioFrameworkExtraBundle/index.html
+[7]:  http://symfony.com/doc/2.6/book/doctrine.html
+[8]:  http://symfony.com/doc/2.6/book/templating.html
+[9]:  http://symfony.com/doc/2.6/book/security.html
+[10]: http://symfony.com/doc/2.6/cookbook/email.html
+[11]: http://symfony.com/doc/2.6/cookbook/logging/monolog.html
+[12]: http://symfony.com/doc/2.6/cookbook/assetic/asset_management.html
+[13]: http://symfony.com/doc/2.6/bundles/SensioGeneratorBundle/index.html
