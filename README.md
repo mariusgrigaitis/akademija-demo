@@ -1,3 +1,5 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mariusgrigaitis/akademija-demo/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mariusgrigaitis/akademija-demo/?branch=master)
+
 Symfony Standard Edition
 ========================
 
